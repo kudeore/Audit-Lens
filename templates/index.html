@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Audit Analysis Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🔍 Smart Audit Analysis Tool</h1>
+                <p class="tagline">AI-Powered Audit Matching & Issue Clustering</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Input Section -->
+            <section class="input-section card">
+                <div class="card-header">
+                    <h2>🎯 Audit Analysis Input</h2>
+                    <p>Find similar historical audits and analyze clustered issues</p>
+                </div>
+
+                <div class="card-body">
+                    <form id="auditForm">
+                        <div class="form-group">
+                            <label for="auditTitle" class="form-label">
+                                <span class="label-icon">📋</span>
+                                Current Audit Title
+                            </label>
+                            <textarea 
+                                id="auditTitle" 
+                                class="form-control" 
+                                rows="3"
+                                placeholder="Enter your current audit title (e.g., 'Financial Controls Assessment for Manufacturing Operations')..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="threshold" class="form-label">
+                                <span class="label-icon">⚙️</span>
+                                Similarity Threshold: <span id="thresholdValue">0.1</span>
+                            </label>
+                            <input 
+                                type="range" 
+                                id="threshold" 
+                                class="threshold-slider"
+                                min="0.1" 
+                                max="1.0" 
+                                step="0.1" 
+                                value="0.1">
+                            <div class="threshold-labels">
+                                <span>0.1 (Broad Match)</span>
+                                <span>1.0 (Exact Match)</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="analyzeBtn">
+                            <span class="btn-icon">🚀</span>
+                            Analyze Similar Audits
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Loading Section -->
+            <section id="loadingSection" class="loading-section" style="display: none;">
+                <div class="loading-content">
+                    <div class="spinner"></div>
+                    <p>Analyzing audit data using AI/ML algorithms...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                <!-- Similar Audits -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🔍 Similar Historical Audits</h2>
+                        <span id="matchCount" class="badge"></span>
+                    </div>
+                    <div class="card-body">
+                        <div id="similarAudits" class="similar-audits-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Issue Clustering -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>🎨 Issue Themes & Clustering</h2>
+                        <span id="themeCount" class="badge"></span>
+                    </div>
+                    <div class="card-body">
+                        <div id="issueClusters" class="clusters-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Theme Details Modal -->
+                <div id="themeModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modalThemeTitle">Theme Details</h3>
+                            <button class="close-btn" onclick="closeModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="themeIssues" class="theme-issues"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section id="errorSection" class="error-section" style="display: none;">
+                <div class="error-content">
+                    <h3>⚠️ Analysis Error</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn btn-secondary" onclick="resetForm()">Try Again</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Smart Audit Analysis Tool - AI-Powered Business Intelligence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let currentAnalysisData = null;
+        const API_BASE_URL = 'http://localhost:5000/api';
+
+        // DOM elements
+        const auditForm = document.getElementById('auditForm');
+        const thresholdSlider = document.getElementById('threshold');
+        const thresholdValue = document.getElementById('thresholdValue');
+        const loadingSection = document.getElementById('loadingSection');
+        const resultsSection = document.getElementById('resultsSection');
+        const errorSection = document.getElementById('errorSection');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update threshold value display
+            thresholdSlider.addEventListener('input', function() {
+                thresholdValue.textContent = this.value;
+            });
+
+            // Form submission
+            auditForm.addEventListener('submit', handleFormSubmission);
+        });
+
+        async function handleFormSubmission(e) {
+            e.preventDefault();
+
+            const auditTitle = document.getElementById('auditTitle').value.trim();
+            const threshold = parseFloat(document.getElementById('threshold').value);
+
+            if (!auditTitle) {
+                showError('Please enter an audit title');
+                return;
+            }
+
+            showLoading();
+            hideError();
+            hideResults();
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/full-analysis`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        audit_title: auditTitle,
+                        threshold: threshold
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Analysis failed');
+                }
+
+                currentAnalysisData = data;
+                displayResults(data);
+
+            } catch (error) {
+                showError(`Analysis failed: ${error.message}`);
+            } finally {
+                hideLoading();
+            }
+        }
+
+        function displayResults(data) {
+            // Display similar audits
+            displaySimilarAudits(data.similar_audits);
+
+            // Display issue clusters
+            displayIssueClusters(data.clustered_issues);
+
+            // Update counts
+            document.getElementById('matchCount').textContent = `${data.matches_found} matches`;
+            document.getElementById('themeCount').textContent = `${data.themes_found} themes`;
+
+            showResults();
+        }
+
+        function displaySimilarAudits(audits) {
+            const container = document.getElementById('similarAudits');
+
+            if (!audits || audits.length === 0) {
+                container.innerHTML = '<p class="no-data">No similar audits found. Try lowering the threshold.</p>';
+                return;
+            }
+
+            container.innerHTML = audits.map(audit => `
+                <div class="audit-card">
+                    <div class="audit-header">
+                        <h4>${audit.audit_id}</h4>
+                        <span class="similarity-score">${(audit.similarity_score * 100).toFixed(1)}%</span>
+                    </div>
+                    <h5 class="audit-title">${audit.audit_title}</h5>
+                    <p class="audit-findings">${audit.audit_findings}</p>
+                </div>
+            `).join('');
+        }
+
+        function displayIssueClusters(clusters) {
+            const container = document.getElementById('issueClusters');
+
+            if (!clusters || Object.keys(clusters).length === 0) {
+                container.innerHTML = '<p class="no-data">No issue themes found.</p>';
+                return;
+            }
+
+            container.innerHTML = Object.entries(clusters).map(([themeName, themeData]) => `
+                <div class="cluster-card" onclick="openThemeModal('${themeName}', ${JSON.stringify(themeData).replace(/"/g, '&quot;')})">
+                    <div class="cluster-header">
+                        <h4>${themeName}</h4>
+                        <span class="issue-count">${themeData.issue_count} issues</span>
+                    </div>
+                    <p class="cluster-preview">Click to explore detailed issues in this theme</p>
+                </div>
+            `).join('');
+        }
+
+        function openThemeModal(themeName, themeData) {
+            // Parse the theme data (it was stringified in the HTML)
+            const data = typeof themeData === 'string' ? JSON.parse(themeData.replace(/&quot;/g, '"')) : themeData;
+
+            document.getElementById('modalThemeTitle').textContent = themeName;
+
+            const issuesHTML = data.issues.map(issue => `
+                <div class="issue-item">
+                    <div class="issue-header">
+                        <h5>${issue.issue_id}: ${issue.issue_title}</h5>
+                        <span class="severity severity-${issue.severity?.toLowerCase()}">${issue.severity}</span>
+                    </div>
+                    <p class="issue-description">${issue.issue_description}</p>
+                    <div class="issue-meta">
+                        <span><strong>Status:</strong> ${issue.status}</span>
+                        <span><strong>Assigned:</strong> ${issue.assigned_to}</span>
+                        <span><strong>Date:</strong> ${issue.created_date}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('themeIssues').innerHTML = issuesHTML;
+            document.getElementById('themeModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('themeModal').style.display = 'none';
+        }
+
+        function showLoading() {
+            loadingSection.style.display = 'block';
+        }
+
+        function hideLoading() {
+            loadingSection.style.display = 'none';
+        }
+
+        function showResults() {
+            resultsSection.style.display = 'block';
+        }
+
+        function hideResults() {
+            resultsSection.style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('errorMessage').textContent = message;
+            errorSection.style.display = 'block';
+        }
+
+        function hideError() {
+            errorSection.style.display = 'none';
+        }
+
+        function resetForm() {
+            hideError();
+            hideResults();
+            document.getElementById('auditTitle').value = '';
+            document.getElementById('threshold').value = '0.1';
+            document.getElementById('thresholdValue').textContent = '0.1';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('themeModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+issue_id,audit_title,issue_title,issue_description,severity,status,assigned_to,created_date
+ISS-0001,Financial Controls Assessment Manufacturing Operations,Inadequate Payroll Control Controls,System configurations for audit trails do not meet security requirements,High,Open,Auditor_2,2024-04-08
+ISS-0002,Financial Controls Assessment Manufacturing Operations,Lack of Inventory Control Controls,Training programs for system users are outdated or insufficient,High,Open,Auditor_7,2024-06-09
+ISS-0003,Financial Controls Assessment Manufacturing Operations,Weak Documentation Procedures,Training programs for staff members are outdated or insufficient,High,Closed,Auditor_8,2024-09-04
+ISS-0004,IT Security Data Privacy Compliance Review,Insufficient Vendor Management Controls,Monitoring activities for quality standards are not performed regularly,Medium,Open,Auditor_4,2024-02-13
+ISS-0005,IT Security Data Privacy Compliance Review,Outdated IT Security Procedures,Policies related to vendor selection lack proper implementation,Low,Closed,Auditor_3,2024-09-24
+ISS-0006,IT Security Data Privacy Compliance Review,Missing Process Control Controls,Monitoring activities for quality standards are not performed regularly,High,In Progress,Auditor_7,2024-05-03
+ISS-0007,IT Security Data Privacy Compliance Review,Missing Quality Control Procedures,Documentation for approval processes is incomplete or missing,Medium,Open,Auditor_4,2024-12-18
+ISS-0008,IT Security Data Privacy Compliance Review,Lack of Compliance Procedures,Policies related to revenue recording lack proper implementation,High,Open,Auditor_3,2024-11-06
+ISS-0009,IT Security Data Privacy Compliance Review,Unauthorized Inventory Control Controls,Policies related to revenue recording lack proper implementation,Low,Closed,Auditor_5,2024-11-11
+ISS-0010,Procurement Process Vendor Management Audit,Outdated Financial Control Controls,Training programs for system users are outdated or insufficient,Low,Closed,Auditor_10,2024-04-05
+ISS-0011,Procurement Process Vendor Management Audit,Incomplete Cash Management Controls,Training programs for management personnel are outdated or insufficient,High,Open,Auditor_4,2024-10-03
+ISS-0012,Procurement Process Vendor Management Audit,Insufficient Payroll Control Controls,Training programs for system users are outdated or insufficient,Low,Closed,Auditor_7,2024-04-18
+ISS-0013,Revenue Recognition Sales Process Review,Outdated Financial Control Procedures,Policies related to inventory management lack proper implementation,Medium,Open,Auditor_10,2024-09-08
+ISS-0014,Revenue Recognition Sales Process Review,Poor Documentation Controls,Monitoring activities for compliance requirements are not performed regularly,Medium,Closed,Auditor_8,2024-04-18
+ISS-0015,Revenue Recognition Sales Process Review,Weak Payroll Control Procedures,Policies related to revenue recording lack proper implementation,Low,In Progress,Auditor_6,2024-07-14
+ISS-0016,Revenue Recognition Sales Process Review,Improper Regulatory Procedures,Policies related to revenue recording lack proper implementation,High,Open,Auditor_4,2024-09-15
+ISS-0017,Internal Controls Financial Reporting Assessment,Unauthorized Process Control Controls,Control mechanisms for user access are not functioning as designed,High,Open,Auditor_3,2024-07-16
+ISS-0018,Internal Controls Financial Reporting Assessment,Improper Documentation Procedures,System configurations for data backup do not meet security requirements,Low,Closed,Auditor_9,2024-11-23
+ISS-0019,Internal Controls Financial Reporting Assessment,Improper Process Control Controls,Control mechanisms for user access are not functioning as designed,High,Closed,Auditor_8,2024-09-28
+ISS-0020,Internal Controls Financial Reporting Assessment,Lack of Process Control Controls,System configurations for audit trails do not meet security requirements,High,Closed,Auditor_4,2024-10-20
+ISS-0021,Cybersecurity Framework Implementation Review,Poor Data Security Controls,Segregation of duties in payment processing is not properly maintained,High,In Progress,Auditor_7,2024-03-22
+ISS-0022,Cybersecurity Framework Implementation Review,Outdated IT Security Controls,Monitoring activities for quality standards are not performed regularly,Low,In Progress,Auditor_3,2024-06-03
+ISS-0023,Cybersecurity Framework Implementation Review,Missing Risk Management Controls,Training programs for system users are outdated or insufficient,Low,Open,Auditor_3,2024-05-04
+ISS-0024,Inventory Management Warehouse Operations Audit,Lack of Process Control Controls,Review procedures for operational reports lack management oversight,Medium,Open,Auditor_2,2024-11-14
+ISS-0025,Inventory Management Warehouse Operations Audit,Outdated Access Control Controls,System configurations for audit trails do not meet security requirements,Low,Open,Auditor_2,2024-02-23
+ISS-0026,Inventory Management Warehouse Operations Audit,Weak Vendor Management Controls,Segregation of duties in payment processing is not properly maintained,High,In Progress,Auditor_4,2024-11-08
+ISS-0027,Human Resources Payroll System Review,Incomplete Cash Management Procedures,Control mechanisms for data processing are not functioning as designed,High,Closed,Auditor_6,2024-07-26
+ISS-0028,Human Resources Payroll System Review,Missing Compliance Controls,Segregation of duties in payment processing is not properly maintained,Medium,Open,Auditor_4,2024-01-22
+ISS-0029,Human Resources Payroll System Review,Missing Financial Control Controls,Segregation of duties in data entry is not properly maintained,High,Open,Auditor_5,2024-03-19
+ISS-0030,Treasury Cash Management Controls Assessment,Inadequate Data Security Procedures,Monitoring activities for security protocols are not performed regularly,Medium,Open,Auditor_7,2024-01-17
+ISS-0031,Treasury Cash Management Controls Assessment,Lack of Revenue Recognition Procedures,Segregation of duties in data entry is not properly maintained,Low,In Progress,Auditor_2,2024-12-10
+ISS-0032,Treasury Cash Management Controls Assessment,Lack of Compliance Procedures,System configurations for access controls do not meet security requirements,Low,Closed,Auditor_3,2024-10-19
+ISS-0033,Treasury Cash Management Controls Assessment,Outdated Financial Control Procedures,Segregation of duties in approval workflows is not properly maintained,Medium,In Progress,Auditor_8,2024-11-07
+ISS-0034,Treasury Cash Management Controls Assessment,Lack of IT Security Procedures,Segregation of duties in approval workflows is not properly maintained,High,Open,Auditor_5,2024-04-26
+ISS-0035,Regulatory Compliance Risk Management Review,Weak Access Control Controls,System configurations for audit trails do not meet security requirements,Medium,In Progress,Auditor_4,2024-03-21
+ISS-0036,Regulatory Compliance Risk Management Review,Inadequate Quality Control Procedures,Monitoring activities for compliance requirements are not performed regularly,High,In Progress,Auditor_3,2024-08-22
+ISS-0037,Regulatory Compliance Risk Management Review,Lack of Vendor Management Procedures,Review procedures for financial statements lack management oversight,Medium,In Progress,Auditor_4,2024-11-09
+ISS-0038,Regulatory Compliance Risk Management Review,Lack of IT Security Procedures,Segregation of duties in payment processing is not properly maintained,Low,Open,Auditor_3,2024-03-08
+ISS-0039,Supply Chain Logistics Operations Audit,Weak Payroll Control Controls,System configurations for access controls do not meet security requirements,Medium,Closed,Auditor_1,2024-10-13
+ISS-0040,Supply Chain Logistics Operations Audit,Improper Access Control Procedures,Monitoring activities for quality standards are not performed regularly,Medium,Open,Auditor_5,2024-07-16
+ISS-0041,Supply Chain Logistics Operations Audit,Inadequate Financial Control Controls,Control mechanisms for financial reporting are not functioning as designed,Medium,Closed,Auditor_10,2024-11-01
+ISS-0042,Supply Chain Logistics Operations Audit,Insufficient Revenue Recognition Controls,Segregation of duties in data entry is not properly maintained,Medium,In Progress,Auditor_5,2024-07-09
+ISS-0043,Supply Chain Logistics Operations Audit,Insufficient IT Security Controls,Control mechanisms for financial reporting are not functioning as designed,High,Open,Auditor_1,2024-10-05
+ISS-0044,Supply Chain Logistics Operations Audit,Missing Process Control Controls,Policies related to revenue recording lack proper implementation,High,In Progress,Auditor_2,2024-10-01
+ISS-0045,Information Technology General Controls Review,Poor Revenue Recognition Procedures,Monitoring activities for compliance requirements are not performed regularly,High,Closed,Auditor_5,2024-11-20
+ISS-0046,Information Technology General Controls Review,Insufficient Cash Management Procedures,Segregation of duties in data entry is not properly maintained,High,In Progress,Auditor_8,2024-02-14
+ISS-0047,Information Technology General Controls Review,Incomplete Revenue Recognition Procedures,Training programs for staff members are outdated or insufficient,Low,Closed,Auditor_8,2024-08-14
+ISS-0048,Information Technology General Controls Review,Poor Compliance Controls,System configurations for audit trails do not meet security requirements,Medium,Open,Auditor_8,2024-06-06
+ISS-0049,Information Technology General Controls Review,Improper Documentation Controls,Monitoring activities for quality standards are not performed regularly,High,Open,Auditor_7,2024-08-18
+ISS-0050,Credit Risk Management Assessment,Improper Revenue Recognition Procedures,Training programs for staff members are outdated or insufficient,Low,Closed,Auditor_6,2024-08-18
+ISS-0051,Credit Risk Management Assessment,Lack of Risk Management Controls,Training programs for system users are outdated or insufficient,High,Open,Auditor_4,2024-06-04
+ISS-0052,Credit Risk Management Assessment,Lack of Cash Management Procedures,Training programs for management personnel are outdated or insufficient,High,Open,Auditor_5,2024-04-12
+ISS-0053,Credit Risk Management Assessment,Weak Compliance Controls,Documentation for reconciliation procedures is incomplete or missing,Low,In Progress,Auditor_2,2024-01-19
+ISS-0054,Operational Risk Controls Evaluation,Improper IT Security Controls,Policies related to vendor selection lack proper implementation,Low,Closed,Auditor_1,2024-03-05
+ISS-0055,Operational Risk Controls Evaluation,Poor Compliance Controls,System configurations for audit trails do not meet security requirements,Medium,In Progress,Auditor_5,2024-10-14
+ISS-0056,Operational Risk Controls Evaluation,Outdated Inventory Control Procedures,Policies related to revenue recording lack proper implementation,High,Open,Auditor_3,2024-09-03
+ISS-0057,Operational Risk Controls Evaluation,Weak Access Control Controls,Training programs for staff members are outdated or insufficient,Low,In Progress,Auditor_2,2024-11-08
+ISS-0058,Operational Risk Controls Evaluation,Outdated Cash Management Procedures,Documentation for approval processes is incomplete or missing,Medium,Open,Auditor_2,2024-01-06
+ISS-0059,Anti Money Laundering Controls Review,Poor Payroll Control Procedures,Training programs for system users are outdated or insufficient,Low,Closed,Auditor_8,2024-08-03
+ISS-0060,Anti Money Laundering Controls Review,Poor Access Control Procedures,Control mechanisms for financial reporting are not functioning as designed,Low,In Progress,Auditor_10,2024-01-25
+ISS-0061,Anti Money Laundering Controls Review,Weak IT Security Procedures,Review procedures for financial statements lack management oversight,Medium,In Progress,Auditor_6,2024-06-22
+ISS-0062,Anti Money Laundering Controls Review,Insufficient Regulatory Controls,Review procedures for financial statements lack management oversight,High,In Progress,Auditor_5,2024-06-04
+ISS-0063,Anti Money Laundering Controls Review,Unauthorized Regulatory Procedures,Segregation of duties in payment processing is not properly maintained,Low,In Progress,Auditor_8,2024-01-07
+ISS-0064,Data Governance Privacy Protection Audit,Lack of Process Control Procedures,Documentation for reconciliation procedures is incomplete or missing,Medium,Closed,Auditor_1,2024-09-14
+ISS-0065,Data Governance Privacy Protection Audit,Insufficient Documentation Procedures,Training programs for staff members are outdated or insufficient,Medium,In Progress,Auditor_8,2024-04-15
+ISS-0066,Data Governance Privacy Protection Audit,Lack of Process Control Controls,Training programs for staff members are outdated or insufficient,High,In Progress,Auditor_5,2024-10-19
+ISS-0067,Data Governance Privacy Protection Audit,Improper Regulatory Controls,Segregation of duties in approval workflows is not properly maintained,High,Closed,Auditor_4,2024-10-13
+ISS-0068,Data Governance Privacy Protection Audit,Missing Regulatory Procedures,Documentation for risk assessments is incomplete or missing,Medium,Open,Auditor_3,2024-09-19
+ISS-0069,Business Continuity Disaster Recovery Review,Insufficient Regulatory Procedures,Documentation for reconciliation procedures is incomplete or missing,High,In Progress,Auditor_5,2024-06-20
+ISS-0070,Business Continuity Disaster Recovery Review,Unauthorized Revenue Recognition Controls,Control mechanisms for data processing are not functioning as designed,Low,Open,Auditor_4,2024-11-22
+ISS-0071,Business Continuity Disaster Recovery Review,Outdated Documentation Procedures,Training programs for staff members are outdated or insufficient,High,Open,Auditor_6,2024-01-10
+ISS-0072,Business Continuity Disaster Recovery Review,Incomplete Risk Management Controls,Policies related to revenue recording lack proper implementation,Low,In Progress,Auditor_10,2024-11-08
+ISS-0073,Business Continuity Disaster Recovery Review,Improper Quality Control Procedures,Review procedures for financial statements lack management oversight,Medium,Closed,Auditor_9,2024-03-03
+ISS-0074,Fraud Risk Assessment Investigation,Incomplete Inventory Control Controls,Policies related to revenue recording lack proper implementation,High,In Progress,Auditor_10,2024-06-19
+ISS-0075,Fraud Risk Assessment Investigation,Outdated Payroll Control Controls,Review procedures for financial statements lack management oversight,Medium,Open,Auditor_10,2024-06-08
+ISS-0076,Fraud Risk Assessment Investigation,Missing Inventory Control Controls,Control mechanisms for financial reporting are not functioning as designed,Medium,In Progress,Auditor_1,2024-10-12
+ISS-0077,Fraud Risk Assessment Investigation,Weak Data Security Procedures,Training programs for staff members are outdated or insufficient,High,In Progress,Auditor_8,2024-05-24
+ISS-0078,Fraud Risk Assessment Investigation,Incomplete Cash Management Controls,Segregation of duties in approval workflows is not properly maintained,High,In Progress,Auditor_1,2024-05-18
+ISS-0079,Fraud Risk Assessment Investigation,Insufficient IT Security Controls,Monitoring activities for quality standards are not performed regularly,Medium,Open,Auditor_10,2024-09-11
+ISS-0080,Environmental Health Safety Compliance Audit,Insufficient Revenue Recognition Procedures,Training programs for staff members are outdated or insufficient,Medium,Open,Auditor_2,2024-04-18
+ISS-0081,Environmental Health Safety Compliance Audit,Weak Financial Control Controls,Documentation for risk assessments is incomplete or missing,Medium,Closed,Auditor_2,2024-08-20
+ISS-0082,Environmental Health Safety Compliance Audit,Unauthorized Compliance Controls,Segregation of duties in data entry is not properly maintained,Low,Closed,Auditor_6,2024-01-13
+ISS-0083,Environmental Health Safety Compliance Audit,Outdated Documentation Procedures,Control mechanisms for data processing are not functioning as designed,Medium,Open,Auditor_3,2024-10-07
+ISS-0084,Quality Management System Review,Lack of Documentation Procedures,Training programs for staff members are outdated or insufficient,High,Open,Auditor_1,2024-03-01
+ISS-0085,Quality Management System Review,Incomplete Cash Management Procedures,System configurations for access controls do not meet security requirements,Low,Open,Auditor_2,2024-08-15
+ISS-0086,Quality Management System Review,Incomplete Vendor Management Procedures,Training programs for staff members are outdated or insufficient,Medium,Closed,Auditor_1,2024-01-16
+ISS-0087,Customer Data Protection Privacy Audit,Unauthorized Revenue Recognition Controls,Documentation for approval processes is incomplete or missing,Medium,Closed,Auditor_10,2024-09-23
+ISS-0088,Customer Data Protection Privacy Audit,Incomplete Financial Control Procedures,Policies related to inventory management lack proper implementation,Low,Closed,Auditor_9,2024-12-28
+ISS-0089,Customer Data Protection Privacy Audit,Missing Financial Control Controls,Segregation of duties in data entry is not properly maintained,Medium,In Progress,Auditor_5,2024-06-05
+ISS-0090,Customer Data Protection Privacy Audit,Improper Data Security Controls,Control mechanisms for user access are not functioning as designed,Low,Closed,Auditor_9,2024-06-22
+ISS-0091,Customer Data Protection Privacy Audit,Insufficient Financial Control Controls,Policies related to inventory management lack proper implementation,Low,Closed,Auditor_4,2024-03-22
+ISS-0092,Customer Data Protection Privacy Audit,Improper Documentation Procedures,Control mechanisms for data processing are not functioning as designed,Low,Closed,Auditor_5,2024-01-06
+ISS-0093,Third Party Risk Management Assessment,Outdated Quality Control Controls,Control mechanisms for user access are not functioning as designed,High,Closed,Auditor_9,2024-04-13
+ISS-0094,Third Party Risk Management Assessment,Unauthorized IT Security Controls,Documentation for risk assessments is incomplete or missing,High,Closed,Auditor_1,2024-11-03
+ISS-0095,Third Party Risk Management Assessment,Outdated IT Security Procedures,Segregation of duties in payment processing is not properly maintained,Medium,Open,Auditor_5,2024-11-22
+ISS-0096,Third Party Risk Management Assessment,Poor IT Security Procedures,Training programs for system users are outdated or insufficient,High,Open,Auditor_5,2024-05-11
+ISS-0097,Third Party Risk Management Assessment,Insufficient Access Control Controls,Segregation of duties in approval workflows is not properly maintained,High,In Progress,Auditor_1,2024-07-01
+ISS-0098,Investment Portfolio Management Review,Insufficient Regulatory Controls,System configurations for data backup do not meet security requirements,High,In Progress,Auditor_3,2024-10-15
+ISS-0099,Investment Portfolio Management Review,Incomplete Data Security Controls,Training programs for management personnel are outdated or insufficient,Low,In Progress,Auditor_4,2024-06-25
+ISS-0100,Investment Portfolio Management Review,Weak Data Security Procedures,Documentation for risk assessments is incomplete or missing,High,Open,Auditor_3,2024-05-07
+ISS-0101,Investment Portfolio Management Review,Weak Inventory Control Controls,Review procedures for compliance documentation lack management oversight,Low,Closed,Auditor_10,2024-06-28
+ISS-0102,Investment Portfolio Management Review,Incomplete Process Control Controls,Policies related to inventory management lack proper implementation,Medium,In Progress,Auditor_8,2024-01-02
+ISS-0103,Investment Portfolio Management Review,Incomplete Regulatory Controls,Control mechanisms for financial reporting are not functioning as designed,Medium,Closed,Auditor_4,2024-06-20
+ISS-0104,Insurance Claims Processing Audit,Lack of Process Control Procedures,Control mechanisms for data processing are not functioning as designed,High,Closed,Auditor_8,2024-08-17
+ISS-0105,Insurance Claims Processing Audit,Lack of Inventory Control Controls,Segregation of duties in approval workflows is not properly maintained,High,In Progress,Auditor_2,2024-09-22
+ISS-0106,Insurance Claims Processing Audit,Unauthorized Compliance Controls,Segregation of duties in approval workflows is not properly maintained,Medium,Closed,Auditor_7,2024-03-20
+ISS-0107,Insurance Claims Processing Audit,Insufficient Compliance Procedures,Policies related to inventory management lack proper implementation,Low,Closed,Auditor_7,2024-09-12
+ISS-0108,Insurance Claims Processing Audit,Inadequate Risk Management Controls,Training programs for staff members are outdated or insufficient,High,Closed,Auditor_9,2024-12-17
+ISS-0109,Insurance Claims Processing Audit,Inadequate Revenue Recognition Controls,Documentation for risk assessments is incomplete or missing,Low,In Progress,Auditor_1,2024-07-12
+ISS-0110,Marketing Campaign Effectiveness Review,Improper Inventory Control Controls,Segregation of duties in data entry is not properly maintained,Low,Closed,Auditor_8,2024-08-25
+ISS-0111,Marketing Campaign Effectiveness Review,Outdated Cash Management Controls,Review procedures for financial statements lack management oversight,Medium,Closed,Auditor_2,2024-12-28
+ISS-0112,Marketing Campaign Effectiveness Review,Lack of Regulatory Controls,Monitoring activities for security protocols are not performed regularly,Medium,In Progress,Auditor_1,2024-07-02
+ISS-0113,Marketing Campaign Effectiveness Review,Unauthorized Vendor Management Controls,Segregation of duties in data entry is not properly maintained,High,Open,Auditor_1,2024-05-27
+ISS-0114,Employee Benefits Administration Audit,Weak Cash Management Procedures,System configurations for access controls do not meet security requirements,High,In Progress,Auditor_4,2024-05-04
+ISS-0115,Employee Benefits Administration Audit,Inadequate Documentation Controls,Monitoring activities for compliance requirements are not performed regularly,Low,Open,Auditor_5,2024-07-01
+ISS-0116,Employee Benefits Administration Audit,Poor Risk Management Controls,Control mechanisms for data processing are not functioning as designed,Medium,In Progress,Auditor_1,2024-11-13
+ISS-0117,Employee Benefits Administration Audit,Incomplete Compliance Procedures,Segregation of duties in approval workflows is not properly maintained,High,Open,Auditor_6,2024-09-11
+ISS-0118,Employee Benefits Administration Audit,Weak Regulatory Procedures,Review procedures for compliance documentation lack management oversight,High,In Progress,Auditor_4,2024-01-26
+ISS-0119,Employee Benefits Administration Audit,Missing Quality Control Controls,Monitoring activities for quality standards are not performed regularly,Medium,In Progress,Auditor_1,2024-11-11
+ISS-0120,Fixed Assets Management Review,Insufficient Cash Management Controls,Review procedures for compliance documentation lack management oversight,Medium,Closed,Auditor_5,2024-02-24
+ISS-0121,Fixed Assets Management Review,Unauthorized Data Security Controls,Training programs for staff members are outdated or insufficient,Medium,In Progress,Auditor_10,2024-12-14
+ISS-0122,Fixed Assets Management Review,Weak Payroll Control Controls,Control mechanisms for data processing are not functioning as designed,High,Closed,Auditor_7,2024-06-17
+ISS-0123,Fixed Assets Management Review,Weak Access Control Controls,Segregation of duties in payment processing is not properly maintained,Medium,In Progress,Auditor_10,2024-01-20
+ISS-0124,Fixed Assets Management Review,Weak Revenue Recognition Controls,System configurations for audit trails do not meet security requirements,Medium,Closed,Auditor_5,2024-04-04
+ISS-0125,Accounts Payable Processing Controls,Weak IT Security Procedures,Training programs for system users are outdated or insufficient,Low,In Progress,Auditor_4,2024-02-05
+ISS-0126,Accounts Payable Processing Controls,Insufficient IT Security Controls,Policies related to inventory management lack proper implementation,Low,Closed,Auditor_5,2024-05-28
+ISS-0127,Accounts Payable Processing Controls,Weak Payroll Control Procedures,Documentation for approval processes is incomplete or missing,High,In Progress,Auditor_1,2024-06-18
+ISS-0128,Accounts Receivable Collection Procedures,Improper Cash Management Procedures,Review procedures for compliance documentation lack management oversight,Low,In Progress,Auditor_7,2024-10-03
+ISS-0129,Accounts Receivable Collection Procedures,Weak Risk Management Procedures,Documentation for risk assessments is incomplete or missing,High,In Progress,Auditor_9,2024-01-27
+ISS-0130,Accounts Receivable Collection Procedures,Insufficient Vendor Management Controls,Policies related to vendor selection lack proper implementation,Medium,Open,Auditor_9,2024-05-05
+ISS-0131,Accounts Receivable Collection Procedures,Outdated Inventory Control Procedures,Segregation of duties in payment processing is not properly maintained,Low,Open,Auditor_1,2024-02-02
+ISS-0132,Accounts Receivable Collection Procedures,Poor Compliance Procedures,Training programs for staff members are outdated or insufficient,Low,In Progress,Auditor_8,2024-04-26
+ISS-0133,Budget Planning Financial Controls,Outdated IT Security Controls,Documentation for reconciliation procedures is incomplete or missing,Medium,Closed,Auditor_6,2024-12-28
+ISS-0134,Budget Planning Financial Controls,Incomplete Financial Control Controls,Training programs for management personnel are outdated or insufficient,Medium,Open,Auditor_3,2024-02-02
+ISS-0135,Budget Planning Financial Controls,Outdated Financial Control Procedures,Documentation for approval processes is incomplete or missing,Medium,Closed,Auditor_8,2024-08-10
+ISS-0136,Budget Planning Financial Controls,Improper Access Control Controls,Control mechanisms for data processing are not functioning as designed,Medium,In Progress,Auditor_10,2024-11-22
+ISS-0137,Budget Planning Financial Controls,Improper Compliance Procedures,Control mechanisms for user access are not functioning as designed,Medium,Open,Auditor_10,2024-09-07
+ISS-0138,Budget Planning Financial Controls,Incomplete Vendor Management Controls,Policies related to revenue recording lack proper implementation,High,Open,Auditor_7,2024-06-26
+ISS-0139,Tax Compliance Reporting Review,Lack of Risk Management Procedures,Documentation for risk assessments is incomplete or missing,Low,In Progress,Auditor_8,2024-09-15
+ISS-0140,Tax Compliance Reporting Review,Weak Inventory Control Procedures,Training programs for staff members are outdated or insufficient,Low,In Progress,Auditor_9,2024-09-18
+ISS-0141,Tax Compliance Reporting Review,Improper Payroll Control Procedures,Training programs for system users are outdated or insufficient,Low,Closed,Auditor_1,2024-10-16
+ISS-0142,Tax Compliance Reporting Review,Outdated Revenue Recognition Procedures,System configurations for data backup do not meet security requirements,High,Closed,Auditor_4,2024-01-19
+ISS-0143,Tax Compliance Reporting Review,Insufficient Documentation Controls,Review procedures for compliance documentation lack management oversight,Low,Closed,Auditor_1,2024-12-05
+ISS-0144,Contract Management Legal Compliance,Lack of Risk Management Procedures,Segregation of duties in data entry is not properly maintained,Low,Closed,Auditor_5,2024-10-16
+ISS-0145,Contract Management Legal Compliance,Missing Documentation Controls,Review procedures for compliance documentation lack management oversight,Medium,In Progress,Auditor_6,2024-09-26
+ISS-0146,Contract Management Legal Compliance,Outdated Compliance Controls,Training programs for management personnel are outdated or insufficient,Low,Open,Auditor_6,2024-08-21
+ISS-0147,Contract Management Legal Compliance,Outdated Payroll Control Controls,Monitoring activities for quality standards are not performed regularly,High,Open,Auditor_9,2024-04-21
+ISS-0148,Product Development Quality Assurance,Inadequate Data Security Controls,System configurations for audit trails do not meet security requirements,Low,In Progress,Auditor_8,2024-11-07
+ISS-0149,Product Development Quality Assurance,Outdated Risk Management Controls,Control mechanisms for user access are not functioning as designed,High,In Progress,Auditor_3,2024-01-27
+ISS-0150,Product Development Quality Assurance,Unauthorized Cash Management Controls,Segregation of duties in approval workflows is not properly maintained,Medium,In Progress,Auditor_9,2024-09-16
+ISS-0151,Product Development Quality Assurance,Weak Regulatory Procedures,Training programs for staff members are outdated or insufficient,Low,Open,Auditor_1,2024-12-11
+ISS-0152,Sales Commission Calculation Audit,Poor Revenue Recognition Procedures,System configurations for data backup do not meet security requirements,Low,Open,Auditor_3,2024-03-16
+ISS-0153,Sales Commission Calculation Audit,Incomplete Quality Control Controls,Control mechanisms for data processing are not functioning as designed,Medium,Closed,Auditor_6,2024-12-08
+ISS-0154,Sales Commission Calculation Audit,Inadequate Revenue Recognition Controls,Policies related to vendor selection lack proper implementation,Low,In Progress,Auditor_6,2024-10-08
+ISS-0155,Sales Commission Calculation Audit,Missing Process Control Controls,Monitoring activities for security protocols are not performed regularly,High,Closed,Auditor_10,2024-02-17
+ISS-0156,Sales Commission Calculation Audit,Improper Vendor Management Procedures,Documentation for approval processes is incomplete or missing,High,In Progress,Auditor_9,2024-08-04
+ISS-0157,Expense Management Reimbursement Review,Poor IT Security Controls,Control mechanisms for financial reporting are not functioning as designed,Low,In Progress,Auditor_5,2024-12-01
+ISS-0158,Expense Management Reimbursement Review,Unauthorized Compliance Procedures,Policies related to vendor selection lack proper implementation,Low,Open,Auditor_2,2024-08-02
+ISS-0159,Expense Management Reimbursement Review,Outdated Financial Control Controls,System configurations for data backup do not meet security requirements,Medium,Open,Auditor_9,2024-03-21
+ISS-0160,Expense Management Reimbursement Review,Incomplete Data Security Controls,Training programs for system users are outdated or insufficient,Medium,Closed,Auditor_9,2024-07-18
+ISS-0161,Capital Expenditure Approval Process,Missing Documentation Controls,Control mechanisms for user access are not functioning as designed,High,Open,Auditor_2,2024-02-20
+ISS-0162,Capital Expenditure Approval Process,Inadequate IT Security Procedures,Monitoring activities for quality standards are not performed regularly,High,Open,Auditor_9,2024-05-08
+ISS-0163,Capital Expenditure Approval Process,Poor Risk Management Procedures,System configurations for audit trails do not meet security requirements,Medium,In Progress,Auditor_1,2024-09-19
+ISS-0164,Capital Expenditure Approval Process,Weak Revenue Recognition Procedures,Segregation of duties in approval workflows is not properly maintained,Low,In Progress,Auditor_7,2024-03-10
+ISS-0165,Capital Expenditure Approval Process,Unauthorized Process Control Procedures,System configurations for data backup do not meet security requirements,Medium,Closed,Auditor_9,2024-03-13
+ISS-0166,Capital Expenditure Approval Process,Missing Compliance Controls,Control mechanisms for financial reporting are not functioning as designed,Medium,In Progress,Auditor_10,2024-10-02
+ISS-0167,Bank Reconciliation Controls Assessment,Missing Cash Management Procedures,Control mechanisms for financial reporting are not functioning as designed,High,Open,Auditor_2,2024-12-25
+ISS-0168,Bank Reconciliation Controls Assessment,Improper Quality Control Controls,System configurations for data backup do not meet security requirements,Medium,Closed,Auditor_6,2024-05-09
+ISS-0169,Bank Reconciliation Controls Assessment,Incomplete Vendor Management Procedures,System configurations for data backup do not meet security requirements,High,Closed,Auditor_4,2024-12-05
+ISS-0170,Petty Cash Management Review,Outdated Vendor Management Procedures,System configurations for data backup do not meet security requirements,Low,Open,Auditor_8,2024-09-21
+ISS-0171,Petty Cash Management Review,Incomplete Compliance Procedures,Segregation of duties in data entry is not properly maintained,High,Open,Auditor_9,2024-08-06
+ISS-0172,Petty Cash Management Review,Lack of Revenue Recognition Procedures,Monitoring activities for quality standards are not performed regularly,High,Closed,Auditor_3,2024-01-07
+ISS-0173,Foreign Exchange Risk Management,Incomplete Access Control Procedures,System configurations for access controls do not meet security requirements,High,Open,Auditor_9,2024-12-09
+ISS-0174,Foreign Exchange Risk Management,Lack of Compliance Controls,Monitoring activities for compliance requirements are not performed regularly,High,Closed,Auditor_9,2024-05-27
+ISS-0175,Foreign Exchange Risk Management,Incomplete Compliance Procedures,Training programs for system users are outdated or insufficient,Low,Open,Auditor_1,2024-02-13
+ISS-0176,Foreign Exchange Risk Management,Unauthorized Financial Control Procedures,Segregation of duties in payment processing is not properly maintained,Low,Open,Auditor_9,2024-01-08
+ISS-0177,Foreign Exchange Risk Management,Missing Quality Control Procedures,Control mechanisms for financial reporting are not functioning as designed,High,In Progress,Auditor_1,2024-04-19
+ISS-0178,Foreign Exchange Risk Management,Weak Cash Management Procedures,Segregation of duties in payment processing is not properly maintained,Medium,Closed,Auditor_3,2024-12-24
+ISS-0179,Derivative Instruments Trading Controls,Lack of Payroll Control Procedures,System configurations for audit trails do not meet security requirements,Medium,Open,Auditor_5,2024-08-16
+ISS-0180,Derivative Instruments Trading Controls,Missing Risk Management Procedures,Training programs for system users are outdated or insufficient,High,Closed,Auditor_2,2024-02-09
+ISS-0181,Derivative Instruments Trading Controls,Weak Financial Control Procedures,Control mechanisms for financial reporting are not functioning as designed,Medium,In Progress,Auditor_6,2024-05-04
+ISS-0182,Customer Credit Assessment Procedures,Insufficient Process Control Controls,Policies related to revenue recording lack proper implementation,Low,Closed,Auditor_6,2024-07-01
+ISS-0183,Customer Credit Assessment Procedures,Outdated Financial Control Controls,System configurations for access controls do not meet security requirements,High,Open,Auditor_5,2024-05-09
+ISS-0184,Customer Credit Assessment Procedures,Improper Process Control Controls,Monitoring activities for security protocols are not performed regularly,Low,Closed,Auditor_8,2024-10-20
+ISS-0185,Customer Credit Assessment Procedures,Missing IT Security Controls,Segregation of duties in data entry is not properly maintained,Medium,Closed,Auditor_10,2024-03-10
+ISS-0186,Supplier Performance Evaluation Review,Poor Payroll Control Controls,Review procedures for compliance documentation lack management oversight,Low,Open,Auditor_6,2024-07-09
+ISS-0187,Supplier Performance Evaluation Review,Unauthorized Risk Management Controls,Review procedures for financial statements lack management oversight,Low,Open,Auditor_8,2024-05-27
+ISS-0188,Supplier Performance Evaluation Review,Insufficient Regulatory Procedures,Documentation for reconciliation procedures is incomplete or missing,Low,In Progress,Auditor_7,2024-02-15
+ISS-0189,Supplier Performance Evaluation Review,Poor IT Security Procedures,Policies related to revenue recording lack proper implementation,High,Open,Auditor_6,2024-03-21
+ISS-0190,Supplier Performance Evaluation Review,Poor Access Control Procedures,Policies related to revenue recording lack proper implementation,Medium,Open,Auditor_9,2024-12-17
+ISS-0191,Project Management Controls Audit,Improper Risk Management Controls,Policies related to revenue recording lack proper implementation,Medium,In Progress,Auditor_2,2024-02-27
+ISS-0192,Project Management Controls Audit,Weak Risk Management Controls,Review procedures for operational reports lack management oversight,Medium,Open,Auditor_5,2024-01-26
+ISS-0193,Project Management Controls Audit,Insufficient Access Control Procedures,Documentation for risk assessments is incomplete or missing,Medium,Closed,Auditor_7,2024-08-08
+ISS-0194,Project Management Controls Audit,Unauthorized Revenue Recognition Controls,Review procedures for financial statements lack management oversight,Low,In Progress,Auditor_7,2024-01-23
+ISS-0195,Research Development Expenditure Review,Missing Compliance Procedures,Review procedures for financial statements lack management oversight,High,In Progress,Auditor_8,2024-09-21
+ISS-0196,Research Development Expenditure Review,Incomplete Inventory Control Controls,Training programs for management personnel are outdated or insufficient,Low,Closed,Auditor_2,2024-11-05
+ISS-0197,Research Development Expenditure Review,Incomplete Data Security Controls,Documentation for reconciliation procedures is incomplete or missing,Low,In Progress,Auditor_7,2024-03-16
+ISS-0198,Research Development Expenditure Review,Lack of Payroll Control Procedures,Review procedures for operational reports lack management oversight,Low,Open,Auditor_6,2024-01-16
+ISS-0199,Intellectual Property Management Assessment,Missing Regulatory Controls,Review procedures for operational reports lack management oversight,Medium,Open,Auditor_2,2024-10-01
+ISS-0200,Intellectual Property Management Assessment,Missing Compliance Controls,Policies related to revenue recording lack proper implementation,Low,Open,Auditor_5,2024-09-27
+ISS-0201,Intellectual Property Management Assessment,Incomplete Vendor Management Procedures,Monitoring activities for quality standards are not performed regularly,Medium,Open,Auditor_8,2024-05-12
+ISS-0202,Intellectual Property Management Assessment,Insufficient IT Security Procedures,System configurations for data backup do not meet security requirements,High,Closed,Auditor_3,2024-04-27
+ISS-0203,Corporate Governance Compliance Review,Inadequate Inventory Control Controls,Training programs for management personnel are outdated or insufficient,Low,Closed,Auditor_2,2024-03-25
+ISS-0204,Corporate Governance Compliance Review,Unauthorized Quality Control Controls,Segregation of duties in payment processing is not properly maintained,High,Closed,Auditor_7,2024-08-05
+ISS-0205,Corporate Governance Compliance Review,Poor Revenue Recognition Controls,Training programs for system users are outdated or insufficient,Low,In Progress,Auditor_8,2024-08-11
+ISS-0206,Corporate Governance Compliance Review,Poor Access Control Procedures,Policies related to vendor selection lack proper implementation,Low,In Progress,Auditor_4,2024-07-27
+ISS-0207,Executive Compensation Review Process,Improper Compliance Controls,Control mechanisms for data processing are not functioning as designed,High,Open,Auditor_8,2024-01-04
+ISS-0208,Executive Compensation Review Process,Weak IT Security Controls,Policies related to vendor selection lack proper implementation,Low,In Progress,Auditor_5,2024-02-12
+ISS-0209,Executive Compensation Review Process,Weak Access Control Controls,Policies related to revenue recording lack proper implementation,High,Open,Auditor_8,2024-02-05
+ISS-0210,Executive Compensation Review Process,Poor Documentation Procedures,Documentation for approval processes is incomplete or missing,Medium,Open,Auditor_4,2024-07-03
+ISS-0211,Board Meeting Documentation Audit,Insufficient Risk Management Controls,Control mechanisms for data processing are not functioning as designed,Low,Closed,Auditor_3,2024-08-12
+ISS-0212,Board Meeting Documentation Audit,Missing Revenue Recognition Procedures,Policies related to revenue recording lack proper implementation,Low,Closed,Auditor_7,2024-06-14
+ISS-0213,Board Meeting Documentation Audit,Incomplete Cash Management Controls,Training programs for system users are outdated or insufficient,Low,Open,Auditor_5,2024-04-17
+ISS-0214,Shareholder Communications Review,Unauthorized Compliance Procedures,Policies related to inventory management lack proper implementation,Low,Open,Auditor_6,2024-06-05
+ISS-0215,Shareholder Communications Review,Unauthorized Regulatory Procedures,Policies related to inventory management lack proper implementation,High,In Progress,Auditor_4,2024-01-02
+ISS-0216,Shareholder Communications Review,Unauthorized Vendor Management Controls,Documentation for reconciliation procedures is incomplete or missing,Medium,Open,Auditor_5,2024-02-17
+ISS-0217,Shareholder Communications Review,Missing Cash Management Controls,Training programs for system users are outdated or insufficient,Low,In Progress,Auditor_4,2024-01-08
+ISS-0218,Compliance Training Program Assessment,Unauthorized Data Security Controls,Policies related to vendor selection lack proper implementation,High,Closed,Auditor_3,2024-12-01
+ISS-0219,Compliance Training Program Assessment,Weak IT Security Procedures,Training programs for staff members are outdated or insufficient,Low,Open,Auditor_1,2024-06-26
+ISS-0220,Compliance Training Program Assessment,Unauthorized Compliance Procedures,Segregation of duties in data entry is not properly maintained,High,In Progress,Auditor_10,2024-03-12

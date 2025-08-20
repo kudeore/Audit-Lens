@@ -1,0 +1,51 @@
+audit_id,audit_title,audit_findings
+AUD-2024-001,Financial Controls Assessment Manufacturing Operations,Multiple control weaknesses identified in inventory valuation and revenue timing
+AUD-2024-002,IT Security Data Privacy Compliance Review,Significant gaps in user access controls and data encryption standards
+AUD-2024-003,Procurement Process Vendor Management Audit,Inadequate vendor screening procedures and contract oversight mechanisms
+AUD-2024-004,Revenue Recognition Sales Process Review,Revenue cut-off issues and insufficient sales process documentation
+AUD-2024-005,Internal Controls Financial Reporting Assessment,Material weaknesses in month-end closing and journal entry controls
+AUD-2024-006,Cybersecurity Framework Implementation Review,Incomplete security policy implementation and incident response gaps
+AUD-2024-007,Inventory Management Warehouse Operations Audit,Physical count discrepancies and obsolete inventory write-down issues
+AUD-2024-008,Human Resources Payroll System Review,Unauthorized payroll access and incomplete termination procedures
+AUD-2024-009,Treasury Cash Management Controls Assessment,Cash handling irregularities and delayed bank reconciliation processes
+AUD-2024-010,Regulatory Compliance Risk Management Review,Non-compliance with industry regulations and inadequate risk assessments
+AUD-2024-011,Supply Chain Logistics Operations Audit,Supplier concentration risks and insufficient logistics monitoring
+AUD-2024-012,Information Technology General Controls Review,Change management deficiencies and inadequate IT governance structure
+AUD-2024-013,Credit Risk Management Assessment,Credit scoring model limitations and insufficient collateral documentation
+AUD-2024-014,Operational Risk Controls Evaluation,Operational risk identification gaps and inadequate mitigation strategies
+AUD-2024-015,Anti Money Laundering Controls Review,AML transaction monitoring weaknesses and incomplete customer due diligence
+AUD-2024-016,Data Governance Privacy Protection Audit,Data classification issues and insufficient privacy impact assessments
+AUD-2024-017,Business Continuity Disaster Recovery Review,Business continuity plan gaps and inadequate disaster recovery testing
+AUD-2024-018,Fraud Risk Assessment Investigation,Fraud detection control weaknesses and insufficient investigation procedures
+AUD-2024-019,Environmental Health Safety Compliance Audit,Environmental compliance gaps and incomplete safety documentation
+AUD-2024-020,Quality Management System Review,Quality control process deficiencies and inadequate corrective actions
+AUD-2024-021,Customer Data Protection Privacy Audit,Customer data handling violations and insufficient consent management
+AUD-2024-022,Third Party Risk Management Assessment,Third party risk assessment gaps and inadequate monitoring procedures
+AUD-2024-023,Investment Portfolio Management Review,Investment policy violations and insufficient portfolio diversification
+AUD-2024-024,Insurance Claims Processing Audit,Claims processing delays and inadequate documentation requirements
+AUD-2024-025,Marketing Campaign Effectiveness Review,Marketing compliance issues and insufficient campaign tracking
+AUD-2024-026,Employee Benefits Administration Audit,Benefits enrollment errors and inadequate employee communication
+AUD-2024-027,Fixed Assets Management Review,Asset capitalization issues and incomplete depreciation calculations
+AUD-2024-028,Accounts Payable Processing Controls,Duplicate payment risks and insufficient three-way matching
+AUD-2024-029,Accounts Receivable Collection Procedures,Collection procedure gaps and inadequate credit limit monitoring
+AUD-2024-030,Budget Planning Financial Controls,Budget variance analysis weaknesses and insufficient management reporting
+AUD-2024-031,Tax Compliance Reporting Review,Tax calculation errors and incomplete regulatory filing procedures
+AUD-2024-032,Contract Management Legal Compliance,Contract approval bypasses and insufficient legal review processes
+AUD-2024-033,Product Development Quality Assurance,Product testing gaps and inadequate quality documentation
+AUD-2024-034,Sales Commission Calculation Audit,Commission calculation errors and insufficient sales validation
+AUD-2024-035,Expense Management Reimbursement Review,Expense policy violations and inadequate receipt documentation
+AUD-2024-036,Capital Expenditure Approval Process,Capital approval threshold bypasses and insufficient project tracking
+AUD-2024-037,Bank Reconciliation Controls Assessment,Reconciliation timing issues and unexplained variance resolution
+AUD-2024-038,Petty Cash Management Review,Cash custody weaknesses and inadequate petty cash replenishment
+AUD-2024-039,Foreign Exchange Risk Management,FX exposure monitoring gaps and insufficient hedging documentation
+AUD-2024-040,Derivative Instruments Trading Controls,Trading limit violations and inadequate derivative valuation
+AUD-2024-041,Customer Credit Assessment Procedures,Credit assessment inconsistencies and insufficient financial analysis
+AUD-2024-042,Supplier Performance Evaluation Review,Supplier evaluation gaps and inadequate performance metrics
+AUD-2024-043,Project Management Controls Audit,Project milestone tracking issues and insufficient budget controls
+AUD-2024-044,Research Development Expenditure Review,R&D cost allocation errors and inadequate project documentation
+AUD-2024-045,Intellectual Property Management Assessment,IP portfolio gaps and insufficient trademark protection
+AUD-2024-046,Corporate Governance Compliance Review,Governance policy violations and insufficient board oversight
+AUD-2024-047,Executive Compensation Review Process,Compensation benchmark gaps and insufficient performance linkage
+AUD-2024-048,Board Meeting Documentation Audit,Meeting documentation gaps and insufficient action item tracking
+AUD-2024-049,Shareholder Communications Review,Communication policy violations and insufficient disclosure controls
+AUD-2024-050,Compliance Training Program Assessment,Training completion gaps and insufficient compliance testing
