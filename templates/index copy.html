@@ -194,8 +194,7 @@
             if (!items || items.length === 0) return '';
             
             const listItems = items.map(item => `<li>${item}</li>`).join('');
-            // **MODIFIED LINE:** Lowered threshold from 250 to 150
-            const isExpandable = items.join(' ').length > 150; 
+            const isExpandable = items.join(' ').length > 250; // Simple length check to decide on expand button
 
             return `
                 <div class="details-tile ${className}">

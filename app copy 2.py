@@ -15,13 +15,11 @@ from datetime import datetime
 # --- NEW LANGCHAIN IMPORTS ---
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
 from langchain_core.pydantic_v1 import BaseModel, Field
-from langchain_core.output_parsers import StrOutputParser
 from typing import List
 
 load_dotenv()
-
 app = Flask(__name__)
 CORS(app)
 
@@ -54,7 +52,6 @@ class AuditAnalyzer:
         self.prepare_audit_vectors()
 
     def preprocess_text(self, text):
-        """Cleans and standardizes text for analysis."""
         if not isinstance(text, str):
             return ""
         text = text.lower()
@@ -63,7 +60,6 @@ class AuditAnalyzer:
         return text
 
     def prepare_audit_vectors(self):
-        """Creates TF-IDF vectors from audit titles for similarity search."""
         if audits_df.empty:
             print("Audit dataframe is empty. Skipping vector preparation.")
             return
@@ -73,67 +69,50 @@ class AuditAnalyzer:
         print(f"Created TF-IDF vectors with shape: {self.audit_vectors.shape}")
 
     def find_similar_audits(self, query_title, threshold=0.1, top_n=5):
-        """Finds the most relevant historical audits based on a query."""
         if self.tfidf_vectorizer is None or self.audit_vectors is None or audits_df.empty:
             return []
-        
         processed_query = self.preprocess_text(query_title)
         query_vector = self.tfidf_vectorizer.transform([processed_query])
         similarities = cosine_similarity(query_vector, self.audit_vectors).flatten()
-        
         similar_indices = np.where(similarities >= threshold)[0]
-        
         if len(similar_indices) == 0:
             return []
-
         results = [{
             'audit_id': audits_df.iloc[idx]['audit_id'],
             'audit_title': audits_df.iloc[idx]['audit_title'],
             'audit_findings': audits_df.iloc[idx]['audit_findings'],
             'similarity_score': float(similarities[idx])
         } for idx in similar_indices]
-        
         results.sort(key=lambda x: x['similarity_score'], reverse=True)
         return results[:top_n]
 
     def cluster_issues(self, audit_titles, n_clusters=None):
-        """Groups related issues into thematic clusters."""
         if issues_df.empty or not audit_titles:
             return []
-        
         matched_issues = issues_df[issues_df['audit_title'].isin(audit_titles)]
         if matched_issues.empty:
             return []
-            
         issue_texts = (matched_issues['issue_title'].fillna('') + ' ' + matched_issues['issue_description'].fillna('')).tolist()
         processed_texts = [self.preprocess_text(text) for text in issue_texts]
-        
         if not any(processed_texts): return []
-
         issue_vectorizer = TfidfVectorizer(max_features=500, stop_words='english', ngram_range=(1, 2))
         try:
             issue_vectors = issue_vectorizer.fit_transform(processed_texts)
             if issue_vectors.shape[0] < 2: return self.fallback_clustering(matched_issues)
-
             if n_clusters is None:
                 n_clusters = min(5, max(2, len(matched_issues) // 3))
-            
-            if issue_vectors.shape[0] < n_clusters:
-                 n_clusters = issue_vectors.shape[0]
-
+            if issue_vectors.shape < n_clusters:
+                n_clusters = issue_vectors.shape
             kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init='auto')
             cluster_labels = kmeans.fit_predict(issue_vectors)
-            
             clustered_issues = {}
             feature_names = issue_vectorizer.get_feature_names_out()
             for cluster_id in range(n_clusters):
                 cluster_mask = (cluster_labels == cluster_id)
                 cluster_issues_df = matched_issues[cluster_mask]
-                
                 top_features_idx = kmeans.cluster_centers_[cluster_id].argsort()[-5:][::-1]
                 top_features = [feature_names[i] for i in top_features_idx]
                 theme_name = f"Theme: {' & '.join(top_features[:3]).title()}"
-                
                 clustered_issues[theme_name] = {
                     'theme_id': cluster_id,
                     'issue_count': len(cluster_issues_df),
@@ -145,7 +124,6 @@ class AuditAnalyzer:
             return self.fallback_clustering(matched_issues)
 
     def fallback_clustering(self, issues):
-        """A simple fallback if K-Means clustering fails."""
         clusters = {}
         for _, issue in issues.iterrows():
             theme = issue['issue_title'].split()[0] if issue['issue_title'] else 'General'
@@ -157,24 +135,13 @@ class AuditAnalyzer:
         return clusters
 
 # ==============================================================================
-# --- Pydantic Data Models for Structured LLM Output ---
+# --- Pydantic Data Models for Structured LLM Output (MODIFIED) ---
 # ==============================================================================
-
-# --- (DELETED) OLD Pydantic models removed for clarity ---
-
-# --- START: NEW Pydantic Models for Detailed Audit Plan ---
-# These models perfectly match the nested structure you want.
-# class ControlsAndActions(BaseModel):
-#     risk_addressed: str = Field(description="The specific risk this control is designed to mitigate.")
-#     control_type: str = Field(description="The type of control (e.g., 'Preventive', 'Detective', 'Corrective').")
-#     control_description: str = Field(description="A brief explanation of what the control does.")
-#     required_actions: List[str] = Field(description="A list of concrete actions needed to implement this control.")
 
 class SubStep(BaseModel):
     sub_step: str = Field(description="A granular action within the main process step.")
     root_cause_analysis: List[str] = Field(description="A list of 'Why?' questions and answers exploring the purpose of this sub-step.")
     identified_risks: List[str] = Field(description="A list of potential risks associated with this sub-step.")
-    # controls_and_actions: List[ControlsAndActions] = Field(description="A list of controls to mitigate the identified risks.")
     leading_questions: List[str] = Field(description="A list of probing questions for the user to consider for this sub-step.")
 
 class ProcessStep(BaseModel):
@@ -183,157 +150,77 @@ class ProcessStep(BaseModel):
     sub_steps: List[SubStep] = Field(description="A list of detailed sub-steps that make up this main step.")
 
 class AuditAnalysis(BaseModel):
-    """The root model for the entire structured audit plan."""
     intro: str = Field(description="An introductory statement from the AI Principal Auditor persona.")
     process_breakdown: List[ProcessStep] = Field(description="A list of all the broken-down process steps.")
-# --- END: NEW Pydantic Models ---
 
 # ==============================================================================
-# --- LLM-Powered Function (The Core AI Logic) ---
+# --- LLM-Powered Function (The Core AI Logic) (MODIFIED) ---
 # ==============================================================================
-
 def get_detailed_audit_plan(process_description: str) -> dict:
-    """
-    Invokes the Expert Auditor AI to generate a systematic, risk-based audit plan.
-    This function now uses the new, detailed Pydantic models.
-    """
     if not api_key:
         return {"error": "GOOGLE_API environment variable not set. Please configure your .env file."}
-
     try:
         llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", temperature=0.1, google_api_key=api_key, max_output_tokens=8192)
-        parser = JsonOutputParser(pydantic_object=AuditAnalysis) # <-- USES THE NEW ROOT MODEL
+        parser = JsonOutputParser(pydantic_object=AuditAnalysis)
 
-        # This prompt is specifically engineered to generate the desired detailed, risk-based breakdown.
-        # It's the same excellent prompt from your request, now connected to the right models.
         prompt_template = PromptTemplate(
-           template="""
-            Persona:
-            You are a highly experienced Principal Auditor in Financial Markets. Your defining trait is professional skepticism combined with methodical risk analysis. You do not accept statements at face value; you systematically dissect every process step and sub-step, challenge assumptions, and apply root cause analysis techniques like the "5 Whys" to uncover hidden risks and dependencies.
+            template="""
+Persona:
+You are a highly experienced Principal Auditor in Financial Markets. Your defining trait is professional skepticism combined with methodical risk analysis. You systematically dissect every process step and sub-step, challenge assumptions, and apply root cause analysis to uncover hidden risks and dependencies.
 
-            Core Mission:
-            Your task is to guide a user through comprehensive audit preparation using a risk-based, step-by-step methodology. You will break down the provided process into granular steps, identify risks at each stage, determine appropriate controls, and generate leading questions to ensure zero audit findings.
+Core Mission:
+Your task is to guide a user through comprehensive audit preparation. You will break down the provided process into granular steps, identify risks at each stage, and generate leading questions.
 
-            Your Thought Process (Follow these steps systematically):
+Your Thought Process (Follow these steps systematically):
 
-            Phase 1: Process Decomposition
-            - Break down the user's process description into detailed steps and sub-steps.
-            - For each sub-step, connect What systems, departments, or external parties interact at this step and create a connection for that.
-              - 
-            Phase 2: Risk Identification
-            - For each substpe identify risk by applying root cause analysis , from direct substeps or from connections identified to those substeps in other upstream or downstream system or processes. 
-            - Stick to following risk areas when identify the risks.
-                **1. OPERATIONAL RISKS**
-                - Process risks (failures, inefficiencies, bottlenecks)
-                - People risks (human error, skill gaps, unauthorized actions)  
-                - System risks (IT failures, integration issues, capacity constraints)
-                - Physical security risks (access control, asset protection)
-                - Business continuity risks (disaster recovery, service disruption)
-                - Business Resilience Risks: Pandemic response, supply chain disruptions
-                
-                **2. DATA RISKS (Critical - Often Overlooked)**
-                - **Data Quality Risks:** Accuracy, completeness, consistency, timeliness, validity
-                - **Data Privacy Risks:** Unauthorized access, improper sharing, consent violations
-                - **Data Sovereignty Risks:** Cross-border transfer violations, jurisdictional compliance
-                - **Data Governance Risks:** Lineage tracking, metadata management, retention policies
-                - **Data Security Risks:** Encryption, access controls, data masking, anonymization
-                - **Data Integration Risks:** Pipeline failures, transformation errors, reconciliation gaps
-                - MODEL RISKS (Critical with AI/ML Integration)
-                
-                **3. COMPLIANCE RISKS**
-                - Regulatory non-compliance (Basel III/IV, RBI guidelines, GDPR, local laws)
-                - Internal policy violations
-                - Reporting and disclosure failures
-                - Audit trail inadequacies
-                - Documentation deficiencies
-                
-                **4. FINANCIAL RISKS**
-                - Credit risks (counterparty defaults, concentration)
-                - Market risks (interest rate, currency, price volatility)
-                - Liquidity risks (cash flow, funding)
-                - Operational loss events
-                - Basis Risk: Mismatch between different rate indices
-                - Settlement and Payment Risks: Failed settlements, payment system failures
-                - Capital Planning Risks: Inadequate capital buffers, stress test failures
-                - Valuation Risks: Mark-to-market inaccuracies, fair value estimation errors
-                
-                **5. STRATEGIC RISKS**
-                - Business model risks
-                - Competitive positioning risks
-                - Technology disruption risks
-                - Reputation risks
-                - Third-party/vendor risks
-                
-                **6. CYBERSECURITY RISKS**
-                - Network security breaches
-                - Malware/ransomware attacks
-                - Identity and access management failures
-                - Social engineering attacks
-                - Cloud Security Risks: Multi-cloud misconfigurations, shared responsibility gaps
-                - Insider Threat Risks: Privileged user misuse, data exfiltration
-                - Emerging Technology Risks: IoT vulnerabilities, quantum computing threats
-                - Cyber Resilience Risks: Recovery time objectives, business continuity gaps
+Phase 1: Process Decomposition
+- Break down the user's process description into detailed steps and sub-steps.
+- For each sub-step, identify what systems, departments, or external parties interact and note these connections.
 
-                **7. REGULATORY AND LEGAL RISKS
-                - Regulatory Change Risks: New regulation adaptation, interpretation uncertainties
-                - Cross-border Regulatory Risks: Multi-jurisdictional compliance conflicts
-                - Enforcement Action Risks: Regulatory penalties, consent orders, restrictions
-                -Legal Liability Risks: Litigation exposure, contract disputes, fiduciary breaches
+Phase 2: Risk Identification
+- For each sub-step, identify risks by applying root cause analysis. Consider risks from the sub-step itself and from its connections to other systems or processes.
+- Stick to the following risk categories: OPERATIONAL, DATA, COMPLIANCE, FINANCIAL, STRATEGIC, CYBERSECURITY, and REGULATORY/LEGAL RISKS.
 
-            Phase 3: Leading Question Generation
-            - For each identified risk ,go to the root cause of it, if possible create multiple scenarios of risk in conet of the process sub steps.
-            - Create probing questions for each scenario of risk identified that will uncover any overlooked areas and ensure complete preparedness.
+Phase 3: Leading Question Generation
+- For each identified risk, consider its root cause and create multiple potential scenarios.
+- For each scenario, create probing questions that will uncover overlooked areas and ensure complete preparedness.
 
-            Focus Areas:
-            - Be exhaustive in breaking down every step and sub-step.
-            - Apply systematic questioning to uncover all related areas and dependencies.
-            - Identify risks comprehensively at each stage.
-            - Generate leading questions that drive thorough self-assessment.
-            - Maintain banking/financial markets context throughout.
+Focus Areas:
+- Be exhaustive in breaking down every step and sub-step.
+- Apply systematic questioning to uncover all related areas and dependencies.
+- Identify risks comprehensively at each stage.
+- Generate insightful leading questions that drive thorough self-assessment.
+- Maintain a banking/financial markets context throughout.
 
-            User's Process Description:
-            "{description}"
+User's Process Description:
+"{description}"
 
-            Action:
-            Based on your systematic risk-based analysis, generate your response in the specified JSON format.
+Action:
+Based on your systematic risk-based analysis, generate your response in the specified JSON format. Ensure the breakdown is complete for all identified steps.
 
-            \n{format_instructions}\n
-            """,
+\n{format_instructions}\n
+""",
             input_variables=["description"],
             partial_variables={"format_instructions": parser.get_format_instructions()}
         )
 
         chain = prompt_template | llm | StrOutputParser()
         raw_response = chain.invoke({"description": process_description})
-
-        # 2. Clean the raw string by removing markdown fences
-        # This regex removes `````` at the end
+        
+        # Clean the raw string by removing markdown fences
         cleaned_response = re.sub(r"^\s*``````\s*$", "", raw_response, flags=re.MULTILINE).strip()
         
-        # 3. Manually parse the cleaned string with your original parser
+        # Manually parse the cleaned string
         ai_response = parser.parse(cleaned_response)
-
-        # --- END: MODIFIED LOGIC ---
 
         return ai_response
 
     except Exception as e:
         print(f"An error occurred in get_detailed_audit_plan: {e}")
-        # Add the raw response to the error for easier debugging
         error_payload = {"error": str(e)}
         if 'raw_response' in locals():
             error_payload['raw_response'] = raw_response
         return error_payload
-
-
-    #     chain = prompt_template | llm | parser
-    #     ai_response = chain.invoke({"description": process_description})
-        
-    #     return ai_response
-
-    # except Exception as e:
-    #     print(f"An error occurred in get_detailed_audit_plan: {e}")
-    #     return {"error": str(e)}
 
 # ==============================================================================
 # --- Flask API Endpoints ---
@@ -342,55 +229,35 @@ analyzer = AuditAnalyzer()
 
 @app.route('/')
 def home():
-    # We will create a new index.html file for the frontend
     return render_template('index.html')
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
-    """Provides a simple health check for the service."""
     return jsonify({'status': 'healthy', 'timestamp': datetime.now().isoformat()})
-    
-# --- START: NEW ENDPOINT FOR THE DETAILED AI ANALYSIS ---
+
 @app.route('/api/generate-audit-plan', methods=['POST'])
 def generate_audit_plan():
-    """
-    This new endpoint receives a process description and returns the
-    full, structured audit plan from the AI.
-    """
     try:
         data = request.get_json()
         process_description = data.get('process_description')
         if not process_description:
             return jsonify({'error': 'process_description is required'}), 400
-        
-        # Call the corrected function
         analysis_result = get_detailed_audit_plan(process_description)
-        print(analysis_result)
-        
         if 'error' in analysis_result:
-            # Pass the error from the LLM function to the client
             return jsonify(analysis_result), 500
-            
         return jsonify(analysis_result)
-
     except Exception as e:
         print(f"Error in /api/generate-audit-plan: {e}")
         return jsonify({'error': 'An internal server error occurred.'}), 500
-# --- END: NEW ENDPOINT ---
 
-
-# --- OLD FLOW 1 Endpoint (No changes needed) ---
 @app.route('/api/find-historical-audits', methods=['POST'])
 def find_historical_audits():
-    """Finds and clusters issues from similar historical audits."""
     try:
         data = request.get_json()
         if 'audit_title' not in data:
             return jsonify({'error': 'audit_title is required'}), 400
-            
         audit_title = data['audit_title']
         threshold = float(data.get('threshold', 0.1))
-        
         similar_audits = analyzer.find_similar_audits(audit_title, threshold)
         if not similar_audits:
             return jsonify({
@@ -400,10 +267,8 @@ def find_historical_audits():
                 'similar_audits': [],
                 'clustered_issues': {}
             })
-            
         audit_titles = [audit['audit_title'] for audit in similar_audits]
         clustered_issues = analyzer.cluster_issues(audit_titles)
-        
         return jsonify({
             'query_title': audit_title,
             'matches_found': len(similar_audits),
@@ -414,9 +279,6 @@ def find_historical_audits():
     except Exception as e:
         print(f"Error in /api/find-historical-audits: {e}")
         return jsonify({'error': 'An internal server error occurred.'}), 500
-
-# --- NOTE: The old /api/expert-auditor-guidance and /api/ai-driven-analysis endpoints
-# can now be safely removed if this new flow replaces them. I've left them out here for clarity.
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
