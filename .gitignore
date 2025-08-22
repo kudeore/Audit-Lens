@@ -1,0 +1,50 @@
+# Python
+# A comprehensive .gitignore for Python projects
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# Virtual environment
+.venv/
+venv/
+env/
+/bin
+/lib
+/include
+# Virtual environments can be named anything, so it's good to exclude common ones.
+# To be safe, add the name of your virtual environment folder here, if it's not one of these.
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+# It's a good practice to not commit your dependencies, as they can be installed using a requirements file.
+# The `requirements.txt` file should be committed, but the packages themselves should not.
+# You can use pip freeze > requirements.txt to create this file.
+*.egg-info/
+dist/
+build/
+
+# Log and database files
+*.log
+*.sqlite3
+db.sqlite3
+
+# API keys and sensitive information
+# This is the most critical part for your project.
+# Never commit files that contain API keys, passwords, or other sensitive data.
+# A common practice is to use a separate file for these keys and add it to your .gitignore.
+# Example:
+secrets.py
+config.py
+.env

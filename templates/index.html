@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
         <div class="container">
             <div class="header-content">
                 <h1 class="logo">🔍 Smart Audit Analysis Tool</h1>
-                <p class="tagline">AI-Powered Audit Matching & Issue Clustering</p>
+                <p class="tagline">AI-Powered Audit Matching & Proactive Risk Analysis</p>
             </div>
         </div>
     </header>
@@ -22,308 +21,301 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Input Section -->
-            <section class="input-section card">
-                <div class="card-header">
-                    <h2>🎯 Audit Analysis Input</h2>
-                    <p>Find similar historical audits and analyze clustered issues</p>
+            <!-- Feature Selection -->
+            <section id="featureSelection" class="feature-selection">
+                <div class="feature-card" onclick="showFeature('similaritySearch')">
+                    <h3>Similarity Search</h3>
+                    <p>Find historical audits that match a planned audit title and explore past issue themes.</p>
                 </div>
+                <div class="feature-card" onclick="showFeature('aiAssistant')">
+                    <h3>AI Auditor Assistant</h3>
+                    <p>Describe a process to get an AI-driven risk analysis and proactive advice for audit preparation.</p>
+                </div>
+            </section>
 
-                <div class="card-body">
-                    <form id="auditForm">
-                        <div class="form-group">
-                            <label for="auditTitle" class="form-label">
-                                <span class="label-icon">📋</span>
-                                Current Audit Title
-                            </label>
-                            <textarea 
-                                id="auditTitle" 
-                                class="form-control" 
-                                rows="3"
-                                placeholder="Enter your current audit title (e.g., 'Financial Controls Assessment for Manufacturing Operations')..."
-                                required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="threshold" class="form-label">
-                                <span class="label-icon">⚙️</span>
-                                Similarity Threshold: <span id="thresholdValue">0.1</span>
-                            </label>
-                            <input 
-                                type="range" 
-                                id="threshold" 
-                                class="threshold-slider"
-                                min="0.1" 
-                                max="1.0" 
-                                step="0.1" 
-                                value="0.1">
-                            <div class="threshold-labels">
-                                <span>0.1 (Broad Match)</span>
-                                <span>1.0 (Exact Match)</span>
+            <!-- Similarity Search Feature -->
+            <div id="similaritySearchFeature" style="display:none;">
+                <section class="input-section card">
+                    <div class="card-header">
+                        <h2>🎯 Audit Similarity Search</h2>
+                        <p>Find similar historical audits and analyze clustered issues</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="auditForm">
+                            <div class="form-group">
+                                <label for="auditTitle" class="form-label">Current Audit Title</label>
+                                <textarea id="auditTitle" class="form-control" rows="3" placeholder="Enter your current audit title..." required></textarea>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="threshold" class="form-label">Similarity Threshold: <span id="thresholdValue">0.1</span></label>
+                                <input type="range" id="threshold" class="threshold-slider" min="0.1" max="1.0" step="0.1" value="0.1">
+                                <div class="threshold-labels"><span>Broad Match</span><span>Exact Match</span></div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">🚀 Analyze Similar Audits</button>
+                                <button type="button" class="btn btn-secondary" onclick="goHome()">🏠 Home</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <section id="resultsSection" class="results-section" style="display: none;">
+                    <div class="card">
+                        <div class="card-header"><h2>🔍 Similar Historical Audits</h2><span id="matchCount" class="badge"></span></div>
+                        <div class="card-body"><div id="similarAudits" class="similar-audits-grid"></div></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2>🎨 Issue Themes & Clustering</h2><span id="themeCount" class="badge"></span></div>
+                        <div class="card-body"><div id="issueClusters" class="clusters-grid"></div></div>
+                    </div>
+                </section>
+            </div>
 
-                        <button type="submit" class="btn btn-primary" id="analyzeBtn">
-                            <span class="btn-icon">🚀</span>
-                            Analyze Similar Audits
-                        </button>
-                    </form>
-                </div>
-            </section>
+            <!-- AI Auditor Assistant Feature -->
+            <div id="aiAssistantFeature" style="display:none;">
+                <section class="input-section card">
+                    <div class="card-header">
+                        <h2>🤖 AI Auditor Assistant</h2>
+                        <p>Get proactive advice to prepare for your next audit</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="aiAuditForm">
+                            <div class="form-group">
+                                <label for="processDescription" class="form-label">Process or Audit Scope Description</label>
+                                <textarea id="processDescription" class="form-control" rows="5" placeholder="Describe the business process, system, or area you are preparing to audit..." required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">💡 Get AI Analysis</button>
+                                <button type="button" class="btn btn-secondary" onclick="goHome()">🏠 Home</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                 <section id="aiResultsSection" class="results-section" style="display: none;"></section>
+            </div>
 
-            <!-- Loading Section -->
+            <!-- Common Sections -->
             <section id="loadingSection" class="loading-section" style="display: none;">
-                <div class="loading-content">
-                    <div class="spinner"></div>
-                    <p>Analyzing audit data using AI/ML algorithms...</p>
-                </div>
+                <div class="loading-content"><div class="spinner"></div><p id="loadingText">Analyzing...</p></div>
             </section>
-
-            <!-- Results Section -->
-            <section id="resultsSection" class="results-section" style="display: none;">
-                <!-- Similar Audits -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2>🔍 Similar Historical Audits</h2>
-                        <span id="matchCount" class="badge"></span>
-                    </div>
-                    <div class="card-body">
-                        <div id="similarAudits" class="similar-audits-grid"></div>
-                    </div>
-                </div>
-
-                <!-- Issue Clustering -->
-                <div class="card">
-                    <div class="card-header">
-                        <h2>🎨 Issue Themes & Clustering</h2>
-                        <span id="themeCount" class="badge"></span>
-                    </div>
-                    <div class="card-body">
-                        <div id="issueClusters" class="clusters-grid"></div>
-                    </div>
-                </div>
-
-                <!-- Theme Details Modal -->
-                <div id="themeModal" class="modal" style="display: none;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 id="modalThemeTitle">Theme Details</h3>
-                            <button class="close-btn" onclick="closeModal()">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="themeIssues" class="theme-issues"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Error Section -->
             <section id="errorSection" class="error-section" style="display: none;">
                 <div class="error-content">
-                    <h3>⚠️ Analysis Error</h3>
-                    <p id="errorMessage"></p>
+                    <h3>⚠️ Analysis Error</h3><p id="errorMessage"></p>
                     <button class="btn btn-secondary" onclick="resetForm()">Try Again</button>
                 </div>
             </section>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Smart Audit Analysis Tool - AI-Powered Business Intelligence</p>
+    <!-- Modal -->
+    <div id="themeModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header"><h3 id="modalThemeTitle">Theme Details</h3><button class="close-btn" onclick="closeModal()">&times;</button></div>
+            <div class="modal-body"><div id="themeIssues" class="theme-issues"></div></div>
         </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Smart Audit Analysis Tool - AI-Powered Business Intelligence</p>
     </footer>
 
-    <script>
-        // Global variables
-        let currentAnalysisData = null;
-        const API_BASE_URL = 'http://localhost:5000/api';
+<script>
+    const API_BASE_URL = 'http://localhost:5000/api';
+    
+    // --- DOM Elements ---
+    const loadingSection = document.getElementById('loadingSection');
+    const loadingText = document.getElementById('loadingText');
+    const errorSection = document.getElementById('errorSection');
+    const errorMessage = document.getElementById('errorMessage');
+    const auditForm = document.getElementById('auditForm');
+    const aiAuditForm = document.getElementById('aiAuditForm');
+    const thresholdSlider = document.getElementById('threshold');
+    const thresholdValue = document.getElementById('thresholdValue');
+    const resultsSection = document.getElementById('resultsSection');
+    const aiResultsSection = document.getElementById('aiResultsSection');
 
-        // DOM elements
-        const auditForm = document.getElementById('auditForm');
-        const thresholdSlider = document.getElementById('threshold');
-        const thresholdValue = document.getElementById('thresholdValue');
-        const loadingSection = document.getElementById('loadingSection');
-        const resultsSection = document.getElementById('resultsSection');
-        const errorSection = document.getElementById('errorSection');
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update threshold value display
-            thresholdSlider.addEventListener('input', function() {
-                thresholdValue.textContent = this.value;
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', function() {
+        if (thresholdSlider) {
+            thresholdSlider.addEventListener('input', () => {
+                thresholdValue.textContent = thresholdSlider.value;
             });
-
-            // Form submission
-            auditForm.addEventListener('submit', handleFormSubmission);
-        });
-
-        async function handleFormSubmission(e) {
-            e.preventDefault();
-
-            const auditTitle = document.getElementById('auditTitle').value.trim();
-            const threshold = parseFloat(document.getElementById('threshold').value);
-
-            if (!auditTitle) {
-                showError('Please enter an audit title');
-                return;
-            }
-
-            showLoading();
-            hideError();
-            hideResults();
-
-            try {
-                const response = await fetch(`${API_BASE_URL}/full-analysis`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        audit_title: auditTitle,
-                        threshold: threshold
-                    })
-                });
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(data.error || 'Analysis failed');
-                }
-
-                currentAnalysisData = data;
-                displayResults(data);
-
-            } catch (error) {
-                showError(`Analysis failed: ${error.message}`);
-            } finally {
-                hideLoading();
-            }
         }
-
-        function displayResults(data) {
-            // Display similar audits
-            displaySimilarAudits(data.similar_audits);
-
-            // Display issue clusters
-            displayIssueClusters(data.clustered_issues);
-
-            // Update counts
-            document.getElementById('matchCount').textContent = `${data.matches_found} matches`;
-            document.getElementById('themeCount').textContent = `${data.themes_found} themes`;
-
-            showResults();
+        if (auditForm) {
+            auditForm.addEventListener('submit', handleSimilaritySubmission);
         }
-
-        function displaySimilarAudits(audits) {
-            const container = document.getElementById('similarAudits');
-
-            if (!audits || audits.length === 0) {
-                container.innerHTML = '<p class="no-data">No similar audits found. Try lowering the threshold.</p>';
-                return;
-            }
-
-            container.innerHTML = audits.map(audit => `
-                <div class="audit-card">
-                    <div class="audit-header">
-                        <h4>${audit.audit_id}</h4>
-                        <span class="similarity-score">${(audit.similarity_score * 100).toFixed(1)}%</span>
-                    </div>
-                    <h5 class="audit-title">${audit.audit_title}</h5>
-                    <p class="audit-findings">${audit.audit_findings}</p>
-                </div>
-            `).join('');
+        if (aiAuditForm) {
+            aiAuditForm.addEventListener('submit', handleAiAssistantSubmission);
         }
+    });
 
-        function displayIssueClusters(clusters) {
-            const container = document.getElementById('issueClusters');
+    // --- Navigation and UI Functions ---
+    function showFeature(featureName) {
+        document.getElementById('featureSelection').style.display = 'none';
+        document.getElementById('similaritySearchFeature').style.display = 'none';
+        document.getElementById('aiAssistantFeature').style.display = 'none';
+        document.getElementById(featureName + 'Feature').style.display = 'block';
+    }
 
-            if (!clusters || Object.keys(clusters).length === 0) {
-                container.innerHTML = '<p class="no-data">No issue themes found.</p>';
-                return;
-            }
-
-            container.innerHTML = Object.entries(clusters).map(([themeName, themeData]) => `
-                <div class="cluster-card" onclick="openThemeModal('${themeName}', ${JSON.stringify(themeData).replace(/"/g, '&quot;')})">
-                    <div class="cluster-header">
-                        <h4>${themeName}</h4>
-                        <span class="issue-count">${themeData.issue_count} issues</span>
-                    </div>
-                    <p class="cluster-preview">Click to explore detailed issues in this theme</p>
-                </div>
-            `).join('');
-        }
-
-        function openThemeModal(themeName, themeData) {
-            // Parse the theme data (it was stringified in the HTML)
-            const data = typeof themeData === 'string' ? JSON.parse(themeData.replace(/&quot;/g, '"')) : themeData;
-
-            document.getElementById('modalThemeTitle').textContent = themeName;
-
-            const issuesHTML = data.issues.map(issue => `
-                <div class="issue-item">
-                    <div class="issue-header">
-                        <h5>${issue.issue_id}: ${issue.issue_title}</h5>
-                        <span class="severity severity-${issue.severity?.toLowerCase()}">${issue.severity}</span>
-                    </div>
-                    <p class="issue-description">${issue.issue_description}</p>
-                    <div class="issue-meta">
-                        <span><strong>Status:</strong> ${issue.status}</span>
-                        <span><strong>Assigned:</strong> ${issue.assigned_to}</span>
-                        <span><strong>Date:</strong> ${issue.created_date}</span>
-                    </div>
-                </div>
-            `).join('');
-
-            document.getElementById('themeIssues').innerHTML = issuesHTML;
-            document.getElementById('themeModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('themeModal').style.display = 'none';
-        }
-
-        function showLoading() {
-            loadingSection.style.display = 'block';
-        }
-
-        function hideLoading() {
-            loadingSection.style.display = 'none';
-        }
-
-        function showResults() {
+    function goHome() {
+        document.getElementById('featureSelection').style.display = 'grid';
+        document.getElementById('similaritySearchFeature').style.display = 'none';
+        document.getElementById('aiAssistantFeature').style.display = 'none';
+        resultsSection.style.display = 'none';
+        aiResultsSection.style.display = 'none';
+        hideError();
+        hideLoading();
+    }
+    
+    function resetForm() { location.reload(); }
+    function showLoading(message) { loadingText.textContent = message; loadingSection.style.display = 'block'; }
+    function hideLoading() { loadingSection.style.display = 'none'; }
+    function showError(message) { errorMessage.textContent = message; errorSection.style.display = 'block'; }
+    function hideError() { errorSection.style.display = 'none'; }
+    
+    // --- Similarity Search Logic ---
+    async function handleSimilaritySubmission(e) {
+        e.preventDefault();
+        const auditTitle = document.getElementById('auditTitle').value.trim();
+        if (!auditTitle) { showError('Please enter an audit title'); return; }
+        showLoading('Finding similar audits and clustering issues...');
+        hideError();
+        resultsSection.style.display = 'none';
+        try {
+            const response = await fetch(`${API_BASE_URL}/full-analysis`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ audit_title: auditTitle, threshold: parseFloat(thresholdSlider.value) })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error || 'Analysis failed');
+            displaySimilarityResults(data);
             resultsSection.style.display = 'block';
+        } catch (error) {
+            showError(`Analysis failed: ${error.message}`);
+        } finally {
+            hideLoading();
         }
+    }
 
-        function hideResults() {
-            resultsSection.style.display = 'none';
+    function displaySimilarityResults(data) {
+        const auditsContainer = document.getElementById('similarAudits');
+        const clustersContainer = document.getElementById('issueClusters');
+        if (!data.similar_audits || data.similar_audits.length === 0) {
+            auditsContainer.innerHTML = '<p class="no-data">No similar audits found. Try lowering the threshold.</p>';
+        } else {
+            auditsContainer.innerHTML = data.similar_audits.map(audit => `
+                <div class="audit-card">
+                    <div class="audit-header"><h4>${audit.audit_id}</h4><span class="similarity-score">${(audit.similarity_score * 100).toFixed(1)}%</span></div>
+                    <h5 class="audit-title">${audit.audit_title}</h5><p class="audit-findings">${audit.audit_findings}</p>
+                </div>`).join('');
         }
-
-        function showError(message) {
-            document.getElementById('errorMessage').textContent = message;
-            errorSection.style.display = 'block';
+        if (!data.clustered_issues || Object.keys(data.clustered_issues).length === 0) {
+            clustersContainer.innerHTML = '<p class="no-data">No issue themes found.</p>';
+        } else {
+            clustersContainer.innerHTML = Object.entries(data.clustered_issues).map(([themeName, themeData]) => `
+                <div class="cluster-card" onclick='openThemeModal(${JSON.stringify(themeData.issues)})'>
+                    <div class="cluster-header"><h4>${themeName}</h4><span class="issue-count">${themeData.issue_count} issues</span></div>
+                    <p class="cluster-preview">Click to explore detailed issues in this theme</p>
+                </div>`).join('');
         }
+        document.getElementById('matchCount').textContent = `${data.matches_found} matches`;
+        document.getElementById('themeCount').textContent = `${data.themes_found} themes`;
+    }
 
-        function hideError() {
-            errorSection.style.display = 'none';
+    // --- AI Assistant Logic ---
+    async function handleAiAssistantSubmission(e) {
+        e.preventDefault();
+        const processDescription = document.getElementById('processDescription').value.trim();
+        if (!processDescription) { 
+            showError('Please describe the process or audit scope.'); 
+            return; 
         }
-
-        function resetForm() {
-            hideError();
-            hideResults();
-            document.getElementById('auditTitle').value = '';
-            document.getElementById('threshold').value = '0.1';
-            document.getElementById('thresholdValue').textContent = '0.1';
-        }
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            const modal = document.getElementById('themeModal');
-            if (e.target === modal) {
-                closeModal();
+        showLoading('AI Auditor is searching historical data and synthesizing your report...');
+        hideError();
+        aiResultsSection.style.display = 'none';
+        try {
+            const response = await fetch(`${API_BASE_URL}/ai-audit-assist`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ process_description: processDescription })
+            });
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || 'AI analysis failed');
             }
-        });
-    </script>
+            displayAiResults(data);
+            aiResultsSection.style.display = 'block';
+        } catch (error) {
+            showError(`AI Analysis failed: ${error.message}`);
+        } finally {
+            hideLoading();
+        }
+    }
+    
+    function displayAiResults(data) {
+        const container = aiResultsSection;
+        let resultsHtml = '';
+        if (data.analysis_type === 'data_driven' && data.source_audits && data.source_audits.length > 0) {
+            const sourcesHtml = data.source_audits.map(source => `
+                <div class="source-audit-item">
+                    <h5>${source.audit_id}: ${source.audit_title}</h5>
+                    <span class="badge">Relevance: ${(source.similarity_score * 100).toFixed(0)}%</span>
+                </div>
+            `).join('');
+            resultsHtml += `<div class="card"><div class="card-header"><h2>📚 Source Audits Used for this Analysis</h2></div><div class="card-body">${sourcesHtml}</div></div>`;
+        }
+        if (data.analysis_type === 'general_guidance') {
+            resultsHtml += `<div class="info-banner"><h4>No specific historical data found.</h4><p>We couldn't find any directly matching audits in our database. However, here is some general guidance from our AI Auditor to help you prepare.</p></div>`;
+        }
+        const riskAreasHtml = (data.key_risk_areas || []).map(area => {
+            const evidence = data.analysis_type === 'data_driven' && area.historical_evidence_count > 0 ? `<span class="badge">Based on ${area.historical_evidence_count} historical issues</span>` : '';
+            return `<div class="risk-area-card"><h4>${area.area}</h4><p>${area.explanation}</p>${evidence}</div>`;
+        }).join('');
+        const issuesHtml = (data.suggested_issues_to_self_raise || []).map(item => {
+            const title = data.analysis_type === 'general_guidance' ? `❓ ${item.issue_title}` : item.issue_title;
+            const rationaleLabel = data.analysis_type === 'general_guidance' ? 'Purpose' : 'Rationale';
+            const description = item.issue_description ? `<p><strong>Description:</strong> ${item.issue_description}</p>` : '';
+            const impact = item.potential_impact ? `<p><strong>Potential Impact:</strong> ${item.potential_impact}</p>` : '';
+            return `<div class="suggested-issue-card"><h5>${title}</h5>${description}${impact}<div class="rationale"><strong>${rationaleLabel}:</strong> ${item.rationale}</div></div>`;
+        }).join('');
+        resultsHtml += `
+            <div class="card"><div class="card-header"><h2>📝 AI Analysis Summary</h2></div><div class="card-body"><p>${data.analysis_summary || "No summary provided."}</p></div></div>
+            <div class="card"><div class="card-header"><h2>🚨 Key Risk Areas Identified</h2></div><div class="card-body">${riskAreasHtml || '<p class="no-data">No specific risk areas were identified.</p>'}</div></div>
+            <div class="card"><div class="card-header"><h2>💡 Suggested Issues to Self-Raise</h2></div><div class="card-body">${issuesHtml || '<p class="no-data">No specific issues were suggested.</p>'}</div></div>
+        `;
+        container.innerHTML = resultsHtml;
+    }
+
+    // --- MODAL LOGIC (This was missing) ---
+    function openThemeModal(issues) {
+        document.getElementById('modalThemeTitle').textContent = 'Theme Details';
+        const issuesHTML = issues.map(issue => `
+            <div class="issue-item">
+                <div class="issue-header">
+                    <h5>${issue.issue_id}: ${issue.issue_title}</h5>
+                    <span class="severity severity-${issue.severity?.toLowerCase()}">${issue.severity}</span>
+                </div>
+                <p class="issue-description">${issue.issue_description}</p>
+                <div class="issue-meta">
+                    <span><strong>Status:</strong> ${issue.status}</span>
+                    <span><strong>Assigned:</strong> ${issue.assigned_to}</span>
+                    <span><strong>Date:</strong> ${issue.created_date}</span>
+                </div>
+            </div>
+        `).join('');
+        document.getElementById('themeIssues').innerHTML = issuesHTML;
+        document.getElementById('themeModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('themeModal').style.display = 'none';
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target === document.getElementById('themeModal')) {
+            closeModal();
+        }
+    });
+</script>
 </body>
 </html>

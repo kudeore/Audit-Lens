@@ -666,3 +666,144 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
 }
+.feature-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.6s ease;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
+}
+
+.feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* AI Analysis Results Styles */
+.risk-area-card, .suggested-issue-card {
+    border: 1px solid #e0e6ed;
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: #f8f9fa;
+}
+
+.risk-area-card h4 {
+    color: #2980b9;
+    margin-bottom: 0.5rem;
+}
+
+.suggested-issue-card {
+    border-left-color: #9b59b6;
+}
+
+.suggested-issue-card h5 {
+    color: #8e44ad;
+    margin-bottom: 0.75rem;
+}
+
+.suggested-issue-card p {
+    margin-bottom: 0.5rem;
+}
+
+.rationale {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(236, 240, 241, 0.7);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #34495e;
+    border-top: 2px solid #e0e6ed;
+}
+
+.rationale strong {
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    .feature-selection {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap; /* Allows buttons to stack on small screens */
+}
+
+/* ADD THIS TO THE END of style.css */
+
+.info-banner {
+    background-color: #eaf2f8; /* A light blue background */
+    border-left: 5px solid #3498db; /* A blue left border */
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.info-banner h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.info-banner p {
+    color: #34495e;
+    font-size: 0.95rem;
+}
+
+.source-audit-item {
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.source-audit-item:last-child {
+    margin-bottom: 0;
+}
+
+.source-audit-item h5 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+}
+
+/* Use a different color for the relevance badge */
+.source-audit-item .badge {
+    background: rgba(44, 62, 80, 0.8); /* A dark slate color */
+}
